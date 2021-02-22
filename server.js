@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(cors()); 
 app.use(express.static("./static-assets"));
 const register = require('./controllers/registerController.js');
+const signIn = require('./controllers/signInController.js');
 
 app.listen(3000);
 console.debug('Server listening on port 3000');
@@ -22,6 +23,8 @@ const db = require('knex')({
 });
 
 app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcrypt) });
+
+app.post('/signIn', (req, res) => {signIn.signInHandler(req, res, db, bcrypt) });
 
 
 // //Serve up webpage from server
