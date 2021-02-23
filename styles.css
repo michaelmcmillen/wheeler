@@ -24,3 +24,11 @@ button {
 #emailError {
   display: none;
 }
+
+#signInError {
+  display: none;
+}
+
+#signInErrorEmpty {
+  display: none;
+}
