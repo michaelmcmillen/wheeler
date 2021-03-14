@@ -4,11 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <title>Wheeler - Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <title>Wheeler - Dashboard</title>
 </head>
 <body>
 
-    <input type='text' id='nameRegisterInput' placeholder='Firstname'>
+    <section class="hero is-fullheight">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="./index.html">
+                    <h1 class="title is-3">WHEELER</h1>
+                  </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>                
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" href='./index.html'>
+                      <strong>Sign In</strong>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          
+        <div class="hero-body">
+            
+            <div class='container is-max-desktop level'>
+                <div class="tile is-ancestor level-item">
+                    <div class="tile is-4 is-vertical is-parent">
+                        <div class='tile is-child'>
+                            <div class="field">
+                                <label class="label">First Name</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="text" id='nameRegisterInput' placeholder="First Name">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                  </span>
+                                </div>
+                                
+                              </div>
+                              <div class="field">
+                                <label class="label">Surname</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="text" id='surnameRegisterInput' placeholder="Surname">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="email" id='emailRegisterInput' placeholder="Email">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="password" id='passwordRegisterInput' placeholder="Password">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                  </span>
+                                </div>
+                              </div>
+
+                              <p class="help is-danger" id='signInError'>Unable to login. Please check your details and try again.</p>
+                              <p class="help is-danger" id='signInErrorEmpty'>Please ensure you have entered an Email and Password.</p>
+                        </div>
+                        
+
+                                <div class='tile is-child'>                            
+                                    <button class="button is-link is-medium is-fullwidth" type='button' id='registerButton'>Register</button>
+                                </div>
+                                
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- <input type='text' id='nameRegisterInput' placeholder='Firstname'>
     <br>
     <input type='text' id='surnameRegisterInput' placeholder='Surname'>
     <br>
@@ -17,6 +111,8 @@
     <input type='password' id='passwordRegisterInput' placeholder='Password'>
     <button type='button' id='registerButton'>Register</button>
     <br>
+    <a href='signin.html'>Sign In</a>
+    <br>-->
     <div id='emailError'>
         <p>Bad Email</p>
     </div>
@@ -25,5 +121,7 @@
     </div>
 
     <script src="./register.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
 </body>
 </html>

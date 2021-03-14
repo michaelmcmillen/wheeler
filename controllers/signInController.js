@@ -1,3 +1,5 @@
+const genToken = require('./genToken.js');
+
 exports.signInHandler = (req, res, db, bcrypt) => {
 
     if(!req.body.email || !req.body.password) {
@@ -27,19 +29,30 @@ exports.signInHandler = (req, res, db, bcrypt) => {
                 .where({
                     email: req.body.email
                 })
+                .returning('id')
                 .update({
                     entries: newEntries
                 })
                 .then(response => {
-                    res.status(200).json(true);
+                         // Generate a new JWT based on the users ID
+                        const accessToken = genToken.generateAccessToken({'userid': response[0]});
+                        // Add token to cookie
+                        res.cookie('token', accessToken, {
+                        expires: new Date(Date.now() + 300000),
+                        // secure: false, //set to true if your using https
+                        httpOnly: true,
+                        sameSite: 'strict'
+                      })
+                      .status(200).json(response);
+                    
                 })
-                .catch(err => res.status(400).json(false));
-            }) 
-            .catch(err => res.status(400).json(false));           
+            })            
         }
         else {
             res.status(400).json(false);
         }
     })
-    .catch(err => res.status(400).json(false));
+    .catch(err => res.status(400).json('signInController Error:' + err));
 }
+
+

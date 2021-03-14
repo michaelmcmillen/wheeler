@@ -4,13 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles.css">
-    <title>Wheeler</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <title>Wheeler - Home</title>
 </head>
 <body>
 
-    <a href='register.html'>Register</a>
-    <br>
-    <a href='signin.html'>Sign In</a>
+    <section class="hero is-fullheight">
+
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="./index.html">
+                <h1 class="title is-3">WHEELER</h1>
+              </a>
+          
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>                
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary" href='./register.html'>
+                      <strong>Register</strong>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+        <div class="hero-body">
+            <div class='container is-max-desktop level'>
+                <div class="tile is-ancestor level-item">
+                    <div class="tile is-4 is-vertical is-parent">
+                        <div class='tile is-child'>
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="email" id='emailInput' placeholder="Email input">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                  </span>
+                                </div>
+                                
+                              </div>
+                              <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control has-icons-left">
+                                  <input class="input is-small" type="password" id='passwordInput' placeholder="Password">
+                                  <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                  </span>
+                                </div>
+                              </div>
+                              <p class="help is-danger" id='signInError'>Unable to login. Please check your details and try again.</p>
+                              <p class="help is-danger" id='signInErrorEmpty'>Please ensure you have entered an Email and Password.</p>
+                        </div>
+                        
+
+                            
+                                <div class='tile is-child'>                            
+                                    <button class="button is-link is-small is-fullwidth" type='button' id='signInButton'>Sign In</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button type='button' id='testJWT'>JWT</button>
+    <button type='button' id='invalidateCookie'>Invalidate Cookie</button>
+
+
+    <!-- <div id='signInError'>
+        <p>Incorrect Sign In Details</p>
+    </div> -->
+    <!-- <div id='signInErrorEmpty'>
+        <p>Your Must Enter Sign In Details</p>
+    </div> -->
+
+
+    <script src="./signin.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 </body>
 </html>
