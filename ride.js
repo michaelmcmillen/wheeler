@@ -27,7 +27,6 @@ function embedRide() {
         toggleEmbedError('valid'); 
 
         if(checkEmbedExists()) {
-            console.log('HELLO');
         let embedTile = document.createElement('div');
         embedTile.setAttribute('class', 'tile is-vertical is-parent');
         embedTile.setAttribute('id', 'embedTile');
@@ -87,7 +86,9 @@ function toggleEmbedError(cond) {
     else if(cond === 'invalid' && document.getElementById('embedLinkError') === null) {
         let embedError = document.createElement('p');
         embedError.setAttribute('id', 'embedLinkError');
-        embedError.innerHTML = 'NOPE';
+        embedError.setAttribute('class', 'help is-danger');
+        let urlString = 'https://www.komoot.com/tour/123456789';
+        embedError.innerHTML = 'Please insert a Komoot tour with the format '+ urlString.bold();
         document.getElementById('embedInput').append(embedError);
     }
 }
