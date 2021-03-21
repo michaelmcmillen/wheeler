@@ -1,3 +1,6 @@
+let logoutButton = document.getElementById('logoutButton');
+logoutButton.addEventListener('click', logout);
+
 function getRides() {
 
     fetch('http://localhost:3000/getRides', {

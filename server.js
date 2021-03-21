@@ -17,6 +17,7 @@ const createRide = require('./controllers/createRideController.js');
 const authenticate = require('./controllers/authenticateTokenController.js');
 const invalidateCookie = require('./controllers/invalidateCookieController.js');
 const getRides = require('./controllers/getRidesController.js');
+const logout = require('./controllers/logoutController.js');
 
 const db = require('knex')({
     client: 'pg',
@@ -39,5 +40,7 @@ app.get('/testJWT', (req, res, next) => {authenticate.authenticateToken(req, res
 })
 
 app.get('/invalidateCookie', (req, res) => {invalidateCookie.invalidateCookie(req, res)});
+
+app.get('/logout', (req, res) => {logout.logout(req, res)});
 
 app.get('/getRides', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {getRides.getRides(req, res, db)});

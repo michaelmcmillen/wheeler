@@ -11,6 +11,8 @@ rideLink.addEventListener('input', embedRide);
 var createRideButton = document.getElementById('createRideButton');
 createRideButton.addEventListener('click', createRide);
 let iframeWindow = document.getElementById('iframeEmbed');
+let logoutButton = document.getElementById('logoutButton');
+logoutButton.addEventListener('click', logout);
 
 function embedRide() {
     
