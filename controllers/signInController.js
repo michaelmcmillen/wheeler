@@ -1,4 +1,6 @@
 const genToken = require('./genToken.js');
+const path = require('path');
+
 
 exports.signInHandler = (req, res, db, bcrypt) => {
 
@@ -43,9 +45,9 @@ exports.signInHandler = (req, res, db, bcrypt) => {
                         httpOnly: true,
                         sameSite: 'strict'
                       })
-                      .status(200).json(response);
-                    
+                    .status(200).json(response);
                 })
+                
             })            
         }
         else {

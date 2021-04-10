@@ -1,0 +1,6 @@
+WHEELER NOTES
+
+Why serve everything up from server and not hit html files direct?
+- Found it easier to handle redirects in case of tokens being present/not being present, direct from the server, rather than returning a response to the front end and then making separate requests to other static html files. As the APIs in Express were purely to handle requests to the DB, I'd have to return a success/failure response to the frontend and then redirect from there. Now, I can have a API for each page and request and depending on any middleware functionality redirect on the server side without needing to go back to the frontend. 
+- As its a small project also, I didn't have to worry about any splitting of the server/static files for scalability i.e. if the static files were in huge volumes, maybe I would separate them out to a different server and have Express on its on server so they scaled individually.
+- Means I don't have to manage 2 domains.

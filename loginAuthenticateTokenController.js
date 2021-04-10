@@ -4,7 +4,7 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const path = require('path');
 
-exports.authenticateToken = (req, res, next) => {
+exports.loginAuthenticateToken = (req, res, next) => {
     
     // Check if cookie exists
     const token = req.cookies.token || '';
@@ -13,7 +13,8 @@ exports.authenticateToken = (req, res, next) => {
         if(!token) {
           // If there is no token, return login error
           // return res.status(401).json('You need to Login')
-          return res.redirect('/login');
+          // console.log(path);
+          return res.sendFile(path.join(__dirname + '/static-assets/login.html'));
         }
         // Decrypt token if it exists
         const decrypt = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);

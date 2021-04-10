@@ -27,8 +27,7 @@ function signIn() {
   .then(response => response.json())
   .then(resp => {
     if(resp) {
-      // console.log(resp);
-      window.location.replace("./dashboard.html");
+      window.location.replace("/dashboard");
     }
     else {
       toggleSignInError(resp)

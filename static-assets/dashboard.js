@@ -1,5 +1,5 @@
-let logoutButton = document.getElementById('logoutButton');
-logoutButton.addEventListener('click', logout);
+// let logoutButton = document.getElementById('logoutButton');
+// logoutButton.addEventListener('click', logout);
 
 function getRides() {
 
