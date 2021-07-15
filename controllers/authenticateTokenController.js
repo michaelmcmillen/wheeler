@@ -11,8 +11,7 @@ exports.authenticateToken = (req, res, next) => {
 
     try {
         if(!token) {
-          // If there is no token, return login error
-          // return res.status(401).json('You need to Login')
+          // If there is no token, return the Login page
           return res.redirect('/login');
         }
         // Decrypt token if it exists

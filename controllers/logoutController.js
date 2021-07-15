@@ -6,4 +6,5 @@ exports.logout = (req, res) => {
         sameSite: 'strict'
       })
       .status(200).json("Access: rubbish");
+      next();
 }

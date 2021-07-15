@@ -1,9 +1,13 @@
+// Backend framework for node.js
 const express = require('express');
+// Middleware package to allow Cross Origin Requests
 const cors = require('cors');
+// Encryption for user data
 const bcrypt = require('bcryptjs'); // Password encryption
 const cookieParser = require('cookie-parser'); // Parse and populate cookies
 
 const app = express();
+// Allows string to be created with path to current file
 const path = require('path');
 app.listen(3000); // Run Express on port 3000
 console.debug('Server listening on port 3000');
@@ -19,6 +23,7 @@ const authenticate = require('./controllers/authenticateTokenController.js');
 const loginAuthenticate = require('./controllers/loginAuthenticateTokenController.js');
 const invalidateCookie = require('./controllers/invalidateCookieController.js');
 const getRides = require('./controllers/getRidesController.js');
+const dashboard = require('./controllers/dashboardController.js');
 const logout = require('./controllers/logoutController.js');
 
 const db = require('knex')({
@@ -31,31 +36,29 @@ const db = require('knex')({
     }
 });
 
-app.get('/', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {
-    res.sendFile(path.join(__dirname + '/static-assets/dashboard.html'));
-});
-
 app.get('/login', (req, res, next) => {loginAuthenticate.loginAuthenticateToken(req, res, next)}, (req, res) => {
-    res.sendFile(path.join(__dirname + '/static-assets/dashboard.html'));
+    res.redirect('/dashboard');
 });
-
-app.get('/dashboard', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {
-    res.sendFile(path.join(__dirname + '/static-assets/dashboard.html'));
-});
-
-app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcrypt) });
 
 app.post('/signIn', (req, res) => {signIn.signInHandler(req, res, db, bcrypt)});
 
-app.post('/createRide', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {createRide.createRideHandler(req, res, db) });
+app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcrypt) });
 
-app.get('/authSession', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {
-    // res.status(200).json('Valid Session');
-    res.redirect('http://localhost:8080/dashboard.html');
-})
+// Run token auth on every request below
+app.use(authenticate.authenticateToken);
+
+app.get('/', function (req, res) {
+    res.redirect('/dashboard');
+});
+
+app.get('/dashboard', function (req, res) {dashboard.dashboard(req, res)});
+
+app.post('/createRide', function (req, res) {createRide.createRideHandler(req, res, db) });
+
+app.get('/getRides', function (req, res) {getRides.getRides(req, res, db)});
+
+app.get('/logout', (req, res, next) => {logout.logout(req, res, next)}, (req, res) => {
+    res.redirect('/login');
+});
 
 app.get('/invalidateCookie', (req, res) => {invalidateCookie.invalidateCookie(req, res)});
-
-app.get('/logout', (req, res) => {logout.logout(req, res)});
-
-app.get('/getRides', (req, res, next) => {authenticate.authenticateToken(req, res, next)}, (req, res) => {getRides.getRides(req, res, db)});
