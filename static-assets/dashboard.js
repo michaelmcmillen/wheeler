@@ -1,5 +1,7 @@
 // let logoutButton = document.getElementById('logoutButton');
 // logoutButton.addEventListener('click', logout);
+let createRideButton = document.getElementById('createRide');
+createRideButton.addEventListener('click', createRides);
 
 function getRides() {
 
@@ -75,3 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function createRides() {
+
+  window.location.replace("/createRidePage");
+
+  // fetch('http://localhost:3000/createRidePage', {
+  //   credentials: "include"
+  // })
+  // .then(response => response.json())
+  // .then(resp => {
+  //   if(resp) {
+
+  //   }
+  //   else {
+  //   }
+  // })
+}

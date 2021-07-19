@@ -11,8 +11,8 @@ rideLink.addEventListener('input', embedRide);
 var createRideButton = document.getElementById('createRideButton');
 createRideButton.addEventListener('click', createRide);
 let iframeWindow = document.getElementById('iframeEmbed');
-let logoutButton = document.getElementById('logoutButton');
-logoutButton.addEventListener('click', logout);
+// let logoutButton = document.getElementById('logoutButton');
+// logoutButton.addEventListener('click', logout);
 
 function embedRide() {
     
@@ -120,6 +120,6 @@ function createRide() {
       })
       .then(response => response.json())
       .then(resp => {        
-        window.location.replace("./dashboard.html");
+        window.location.replace("./dashboard");
      })
 }

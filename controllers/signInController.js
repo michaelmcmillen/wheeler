@@ -46,8 +46,9 @@ exports.signInHandler = (req, res, db, bcrypt) => {
                         sameSite: 'strict'
                       })
                     .status(200).json(response);
+                    // .redirect(true, '/dashboard');
+                    
                 })
-                
             })            
         }
         else {

@@ -25,6 +25,8 @@ const invalidateCookie = require('./controllers/invalidateCookieController.js');
 const getRides = require('./controllers/getRidesController.js');
 const dashboard = require('./controllers/dashboardController.js');
 const logout = require('./controllers/logoutController.js');
+const ride = require('./controllers/rideController.js');
+
 
 const db = require('knex')({
     client: 'pg',
@@ -47,7 +49,7 @@ app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcry
 // Run token auth on every request below
 app.use(authenticate.authenticateToken);
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.redirect('/dashboard');
 });
 
@@ -56,6 +58,8 @@ app.get('/dashboard', function (req, res) {dashboard.dashboard(req, res)});
 app.post('/createRide', function (req, res) {createRide.createRideHandler(req, res, db) });
 
 app.get('/getRides', function (req, res) {getRides.getRides(req, res, db)});
+
+app.get('/createRidePage', function (req, res) {ride.ride(req, res)});
 
 app.get('/logout', (req, res, next) => {logout.logout(req, res, next)}, (req, res) => {
     res.redirect('/login');
