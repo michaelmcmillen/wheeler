@@ -79,18 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function createRides() {
-
+  
   window.location.replace("/createRidePage");
 
-  // fetch('http://localhost:3000/createRidePage', {
-  //   credentials: "include"
-  // })
-  // .then(response => response.json())
-  // .then(resp => {
-  //   if(resp) {
-
-  //   }
-  //   else {
-  //   }
-  // })
 }

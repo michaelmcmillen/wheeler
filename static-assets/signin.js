@@ -1,5 +1,5 @@
-let registerButton = document.getElementById('registerButton');
-registerButton.addEventListener('click', registerPage);
+// let registerButton = document.getElementById('registerButton');
+// registerButton.addEventListener('click', registerPage);
 
 var email = document.getElementById('emailInput');
 var password = document.getElementById('passwordInput');
@@ -13,9 +13,7 @@ var invalCook = document.getElementById('invalidateCookie');
 invalCook.addEventListener('click', invalidateCookie);
 
 function registerPage() {
-
       window.location.replace("/registerPage");
-
 }
 
 function signIn() {
