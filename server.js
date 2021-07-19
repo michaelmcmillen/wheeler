@@ -26,6 +26,7 @@ const getRides = require('./controllers/getRidesController.js');
 const dashboard = require('./controllers/dashboardController.js');
 const logout = require('./controllers/logoutController.js');
 const ride = require('./controllers/rideController.js');
+const registerPage = require('./controllers/registerPageController.js');
 
 
 const db = require('knex')({
@@ -46,12 +47,15 @@ app.post('/signIn', (req, res) => {signIn.signInHandler(req, res, db, bcrypt)});
 
 app.post('/register', (req, res) => {register.registerHandler(req, res, db, bcrypt) });
 
+app.get('/registerPage', function (req, res) {registerPage.registerPage(req, res)});
+
 // Run token auth on every request below
 app.use(authenticate.authenticateToken);
 
 app.get('/', (req, res) => {
     res.redirect('/dashboard');
 });
+
 
 app.get('/dashboard', function (req, res) {dashboard.dashboard(req, res)});
 

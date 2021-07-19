@@ -1,3 +1,6 @@
+let registerButton = document.getElementById('registerButton');
+registerButton.addEventListener('click', registerPage);
+
 var email = document.getElementById('emailInput');
 var password = document.getElementById('passwordInput');
 var signInSubmit = document.getElementById('signInButton');
@@ -8,6 +11,12 @@ testJWTButt.addEventListener('click', testJWT);
 
 var invalCook = document.getElementById('invalidateCookie');
 invalCook.addEventListener('click', invalidateCookie);
+
+function registerPage() {
+
+      window.location.replace("/registerPage");
+
+}
 
 function signIn() {
 
@@ -77,7 +86,7 @@ function logout() {
   .then(resp => {
     if(resp) {
       // console.log(resp);
-      window.location.replace("./index.html");
+      window.location.replace("./");
     }
     else {
       toggleSignInError(resp)
