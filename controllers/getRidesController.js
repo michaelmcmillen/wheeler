@@ -1,16 +1,18 @@
 exports.getRides = (req, res, db) => {
-    db.from('rides')
+    db.from('users')
     .where({
             creator: req.user
         })
     .innerJoin(
-        'users',
+        'rides',
         'rides.creator',
-        'users.id'
+        'users.id',
     )
     .select('*')
     .then(response => {
+        
         res.json(response)
+        // console.log(response);
     })
 
 }

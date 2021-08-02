@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <title>Wheeler - Create Ride</title>
+</head>
+<body>
+  <section class="hero is-fullheight">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./myrides">
+          <button class="button is-warning">
+            <span class="icon is-normal">
+              <i class="fas fa-bicycle fa-lg"></i>
+            </span>
+          </button>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navBarTarget2">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id='navBarTarget2' class='navbar-menu'>
+        <div class='navbar-start'>
+          <div class="navbar-item">
+            <a class="subtitle is-7" href='./myrides'>Home</a>
+          </div>
+          <div class="navbar-item">
+            <a class="button is-small is-info" href="./myrides">My Rides</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7">Joined Rides</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7" href="./createRidePage">Create Ride</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7">Notifications</a>
+          </div>
+        </div>
+        <div class='navbar-end'>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-small is-primary" href='./logout'>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="hero-body">
+      <div class='container is-max-desktop level'>
+        <section class='level-item'>
+          <div class='container'>
+            <div class='field'>
+                  <label class="label">Name Your Ride</label>
+                  <div class="control has-icons-left">
+                    <input class="input is-small" type="text" id='rideName' placeholder="">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-pen"></i>
+                    </span>
+                  </div>
+                  </div>
+                  <div class='field'>
+                  <label class="label">Date</label>
+                  <div class="control has-icons-left">
+                    <input class="input is-small" type="date" id='rideDate'>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-calendar"></i>
+                    </span>
+                  </div>
+                  </div>
+                  <div class='field'>
+                  <label class="label">Start Time</label>
+                  <div class="control has-icons-left">
+                    <input class="input is-small" type="time" id='rideTime'>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-clock"></i>
+                    </span>
+                  </div>
+                </div>
+                <div class='field'>
+                  <label class="label">Starting Point</label>
+                  <div class="control has-icons-left">
+                    <input class="input is-small" type="text" id='meetingPoint' placeholder="">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-home"></i>
+                    </div>
+                    </div>
+                    <div class='field'>
+                    <label class="label">Finishing Point</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-small" type="text" id='finishPoint' placeholder="">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-flag-checkered"></i>
+                      </span>
+                    </div>
+                    </div>
+                    <div class='field'>
+                    <label class="label">Leader Name</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-small" type="text" id='leaderName' placeholder="">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-pen"></i>
+                      </span>
+                    </div>
+                    </div>
+                    <div class='field'>
+                    <label class="label">Maximum Participants</label>
+                    <div class="control has-icons-left">
+                      <input class="input is-small" type="text" id='maxParticipants' placeholder="">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-list-ol"></i>
+                      </span>
+                    </div>
+                    </div>
+                    <div class='field'>
+                    <label class="label">Notes</label>
+                    <div class="control has-icons-left">
+                      <textarea class="textarea" id='rideNotes' placeholder=""></textarea>
+                    </div>
+                    </div>
+                    <div class='field'>
+                    <label class="label">Strava / Komoot Link</label>
+                    <div class="control has-icons-left" id='embedInput'>
+                      <input class="input is-small" type="text" id='rideLink' placeholder="">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-link"></i>
+                      </span>
+                    </div>
+                    </div>
+                    <div id='gpxRender'>
+
+                    </div>
+                    <br>
+                <div class='tile is-child'>
+                  <button class="button is-success is-link is-small is-fullwidth" type='button' id='createRideButton'>Create Ride</button>
+                </div>
+          </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <script src="./createRide.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    
+</body>
+</html>

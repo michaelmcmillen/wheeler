@@ -23,10 +23,12 @@ const authenticate = require('./controllers/authenticateTokenController.js');
 const loginAuthenticate = require('./controllers/loginAuthenticateTokenController.js');
 const invalidateCookie = require('./controllers/invalidateCookieController.js');
 const getRides = require('./controllers/getRidesController.js');
-const dashboard = require('./controllers/dashboardController.js');
+const myrides = require('./controllers/myridesController.js');
 const logout = require('./controllers/logoutController.js');
 const ride = require('./controllers/rideController.js');
 const registerPage = require('./controllers/registerPageController.js');
+const selectRide = require('./controllers/selectRideController.js');
+const { Console } = require('console');
 
 
 const db = require('knex')({
@@ -40,7 +42,7 @@ const db = require('knex')({
 });
 
 app.get('/login', (req, res, next) => {loginAuthenticate.loginAuthenticateToken(req, res, next)}, (req, res) => {
-    res.redirect('/dashboard');
+    res.redirect('/myrides');
 });
 
 app.post('/signIn', (req, res) => {signIn.signInHandler(req, res, db, bcrypt)});
@@ -52,12 +54,10 @@ app.get('/registerPage', function (req, res) {registerPage.registerPage(req, res
 // Run token auth on every request below
 app.use(authenticate.authenticateToken);
 
-app.get('/', (req, res) => {
-    res.redirect('/dashboard');
-});
+app.get('/', (req, res) => { res.redirect('/myrides'); });
 
 
-app.get('/dashboard', function (req, res) {dashboard.dashboard(req, res)});
+app.get('/myrides', function (req, res) {myrides.myRides(req, res)});
 
 app.post('/createRide', function (req, res) {createRide.createRideHandler(req, res, db) });
 
@@ -70,3 +70,5 @@ app.get('/logout', (req, res, next) => {logout.logout(req, res, next)}, (req, re
 });
 
 app.get('/invalidateCookie', (req, res) => {invalidateCookie.invalidateCookie(req, res)});
+
+app.post('/selectRide', function (req, res) {selectRide.selectRideHandler(req, res, db) });

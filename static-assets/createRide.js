@@ -15,13 +15,14 @@ let iframeWindow = document.getElementById('iframeEmbed');
 // logoutButton.addEventListener('click', logout);
 
 function embedRide() {
+
+
+
     
     if(rideLink.value === '') {
-        // iframeWindow.src='';
-        // iframeWindow.style.display = 'none';
         toggleEmbedError('blank');
         if(checkEmbedExists) {
-            let deleteEl = document.getElementById('embedTile');
+            let deleteEl = document.getElementById('gpxiframe');
             deleteEl.parentNode.removeChild(deleteEl);
         }
     }
@@ -29,28 +30,22 @@ function embedRide() {
         toggleEmbedError('valid'); 
 
         if(checkEmbedExists()) {
-        let embedTile = document.createElement('div');
-        embedTile.setAttribute('class', 'tile is-vertical is-parent');
-        embedTile.setAttribute('id', 'embedTile');
-        let embedChildTile = document.createElement('div');
-        embedChildTile.setAttribute('class', 'tile is-child');
-        let embedFrame = document.createElement('iframe');
-        embedFrame.setAttribute('src', '');
-        embedFrame.setAttribute('width', '100%');
-        embedFrame.setAttribute('height', '680');
-        embedFrame.setAttribute('frameborder', '0');
-        embedFrame.setAttribute('scrolling', 'no');
-        embedFrame.setAttribute('id', 'iframeEmbed');
 
-        document.getElementById('createRideContainer').append(embedTile);
-        embedTile.append(embedChildTile);
-        embedChildTile.append(embedFrame);
-
-        embedFrame.src=rideLink.value + '/embed?profile=1';
+            let gpxFrame = document.createElement('iframe');
+            gpxFrame.setAttribute('width', '100%');
+            gpxFrame.setAttribute('height', '680');
+            gpxFrame.setAttribute('id', 'gpxiframe');
+            gpxFrame.setAttribute('frameborder', '0');
+            gpxFrame.setAttribute('scrolling', 'no');
+            let gpxRender = document.getElementById('gpxRender');
+        
+            gpxRender.append(gpxFrame);
+        
+            document.getElementById('gpxiframe').src=rideLink.value + '/embed?profile=1';
         embedFrame.style.display = 'block';   
         }
         else {
-            document.getElementById('iframeEmbed').src=rideLink.value + '/embed?profile=1';
+            document.getElementById('gpxiframe').src=rideLink.value + '/embed?profile=1';
         }
 
         }
@@ -64,7 +59,7 @@ function embedRide() {
 }
 
 function checkEmbedExists() {
-    if(document.getElementById('embedTile') === null){
+    if(document.getElementById('gpxiframe') === null){
         return true;
     }
     else {
@@ -91,7 +86,7 @@ function toggleEmbedError(cond) {
         embedError.setAttribute('class', 'help is-danger');
         let urlString = 'https://www.komoot.com/tour/123456789';
         embedError.innerHTML = 'Please insert a Komoot tour with the format '+ urlString.bold();
-        document.getElementById('embedInput').append(embedError);
+        document.getElementById('gpxRender').append(embedError);
     }
 }
 
@@ -120,6 +115,33 @@ function createRide() {
       })
       .then(response => response.json())
       .then(resp => {        
-        window.location.replace("./dashboard");
+        window.location.replace("./myrides");
      })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+  
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+  
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+  
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+  
+  
+        });
+      });
+    }
+  
+  });

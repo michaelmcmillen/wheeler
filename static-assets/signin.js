@@ -34,7 +34,7 @@ function signIn() {
   .then(response => response.json())
   .then(resp => {
     if(resp) {
-      window.location.replace("/dashboard");
+      window.location.replace("/myrides");
     }
     else {
       toggleSignInError(resp)

@@ -4,8 +4,8 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const path = require('path');
 
-exports.dashboard = (req, res, next) => {
+exports.myRides = (req, res, next) => {
 
-  return res.sendFile(path.join(__dirname + '../../static-assets/dashboard.html'));
+  return res.sendFile(path.join(__dirname + '../../static-assets/myrides.html'));
       
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <title>Wheeler - My Rides</title>
+</head>
+<body>
+  
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./login">
+          <button class="button is-warning">
+            <span class="icon is-normal">
+              <i class="fas fa-bicycle fa-lg"></i>
+            </span>
+          </button>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navBarTarget">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div id='navBarTarget' class='navbar-menu'>
+        <div class='navbar-start'>
+          <div class="navbar-item">
+            <a class="subtitle is-7" href='./myrides'>Home</a>
+          </div>
+          <div class="navbar-item">
+            <a class="button is-small is-info" href="./myrides">My Rides</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7">Joined Rides</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7" href="./createRidePage">Create Ride</a>
+          </div>
+          <div class="navbar-item">
+            <a class="subtitle is-7">Notifications</a>
+          </div>
+        </div>
+        <div class='navbar-end'>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-small is-primary" href='./logout'>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="hero is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class='container is-max-desktop level'>
+        <section class='level-item'>
+            <div class="container">
+
+              <div class="columns">
+
+                <div class="column"></div>
+
+                <div class="column is-two-thirds">
+
+                  <article class="panel is-info">
+                    <p class="panel-heading subtitle is-6">
+                      Your Rides
+                    </p>
+                    <div id='ridesPanel'>
+
+                    </div>
+                    <div class="panel-block">
+                      <a class="button is-primary is-small is-fullwidth" id='createRide'>Create Ride</a>
+                      </div>
+
+                  </article>
+                </div>
+                
+                <div class="column"></div>
+              </div>
+
+                  
+                </div>
+
+          </section>
+          </div>
+          </div>
+          </section>
+
+          <div class="modal" id="rideModal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title" id='modalCardTitle'></p>
+                <button class="delete" aria-label="close" id='modalClose'></button>
+              </header>
+              <section class="modal-card-body" id='modalCardContent'>
+                <h2 class='rideCardTitle' id='rideDateTitle'>Date</h2>
+                <h2 class='rideCardTitle' id='startTimeTitle'>Start Time</h2>
+                <h2 class='rideCardTitle' id='startingPointTitle'>Starting Point</h2>
+                <h2 class='rideCardTitle' id='finishingPointTitle'>Finishing Point</h2>
+                <h2 class='rideCardTitle' id='leaderNameTitle'>Leader Name</h2>
+                <h2 class='rideCardTitle' id='maxParticipantsTitle'>Maximum Participants</h2>
+                <h2 class='rideCardTitle' id='numOfParticipantsTitle'>No. Of Participants</h2>
+                <h2 class='rideCardTitle' id='notesTitle'>Notes</h2>
+                <h2 class='rideCardTitle' id='gpxLinkTitle'>GPX Link</h2>
+              </section>
+              <footer class="modal-card-foot">
+                <button class="button is-primary is-small">Make Changes</button>
+                <button class="button is-primary is-small">Close</button>
+              </footer>
+            </div>
+          </div>
+
+    <script src="./myrides.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    
+</body>
+</html>

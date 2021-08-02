@@ -8,7 +8,6 @@ exports.authenticateToken = (req, res, next) => {
     
     // Check if cookie exists
     const token = req.cookies.token || '';
-
     try {
         if(!token) {
           // If there is no token, return the Login page

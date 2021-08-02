@@ -6,35 +6,22 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
-    <title>Wheeler - Dashboard</title>
+    <title>Wheeler - Register</title>
 </head>
 <body>
 
     <section class="hero is-fullheight">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="./index.html">
-                    <h1 class="title is-3">WHEELER</h1>
-                  </a>
-          
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>                
-              </a>
-            </div>
-          
-            <div id="navbarBasicExample" class="navbar-menu">          
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary" href='./'>
-                      <strong>Sign In</strong>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./login">
+            <button class="button is-warning">
+              <span class="icon is-normal">
+                <i class="fas fa-bicycle fa-lg"></i>
+              </span>
+            </button>
+          </a>
+          </div>
           </nav>
           
         <div class="hero-body">
@@ -89,8 +76,14 @@
                         
 
                                 <div class='tile is-child'>                            
-                                    <button class="button is-link is-medium is-fullwidth" type='button' id='registerButton'>Register</button>
+                                    <button class="button is-link is-small is-fullwidth" type='button' id='registerButton'>Register</button>
                                 </div>
+                                <div class='tile is-child'>                            
+                                  <a class="button is-light is-small is-fullwidth" href='./login'>
+                                    Sign In
+                                  </a>
+            
+                            </div>
                                 
 
                     </div>
@@ -99,20 +92,6 @@
         </div>
     </section>
 
-
-
-
-    <!-- <input type='text' id='nameRegisterInput' placeholder='Firstname'>
-    <br>
-    <input type='text' id='surnameRegisterInput' placeholder='Surname'>
-    <br>
-    <input type='email' id='emailRegisterInput' required='required' placeholder='Email'>
-    <br>
-    <input type='password' id='passwordRegisterInput' placeholder='Password'>
-    <button type='button' id='registerButton'>Register</button>
-    <br>
-    <a href='signin.html'>Sign In</a>
-    <br>-->
     <div id='emailError'>
         <p>Bad Email</p>
     </div>

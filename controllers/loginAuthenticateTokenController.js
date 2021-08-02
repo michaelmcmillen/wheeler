@@ -12,7 +12,7 @@ exports.loginAuthenticateToken = (req, res, next) => {
     try {
         if(!token) {
           // If there is no token, return Login page
-          return res.sendFile(path.join(__dirname + '../../static-assets/login.html'));
+          return res.sendFile(path.join(__dirname + '../../static-assets/index.html'));
         }
         // Decrypt token if it exists
         const decrypt = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);

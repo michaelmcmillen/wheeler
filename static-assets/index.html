@@ -11,38 +11,27 @@
 <body>
 
     <section class="hero is-fullheight">
-
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="./index.html">
-                <h1 class="title is-3">WHEELER</h1>
-              </a>
-          
-              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>                
-              </a>
-            </div>
-          
-            <div id="navbarBasicExample" class="navbar-menu">          
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary" href='./registerPage'>
-                      Register
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./login">
+            <button class="button is-warning">
+              <span class="icon is-normal">
+                <i class="fas fa-bicycle fa-lg"></i>
+              </span>
+            </button>
+          </a>
+          </div>
           </nav>
 
         <div class="hero-body">
-            <div class='container is-max-desktop level'>
+            <!-- <div class='container is-max-desktop level'> -->
+              <div class='container is-max-desktop level'>
+
                 <div class="tile is-ancestor level-item">
                     <div class="tile is-4 is-vertical is-parent">
+                        
                         <div class='tile is-child'>
+                          
                             <div class="field">
                                 <label class="label">Email</label>
                                 <div class="control has-icons-left">
@@ -72,13 +61,20 @@
                                     <button class="button is-link is-small is-fullwidth" type='button' id='signInButton'>Sign In</button>
 
                     </div>
+                    <div class='tile is-child'>                            
+                      <a class="button is-light is-small is-fullwidth" href='./registerPage'>
+                        Register
+                      </a>
+
                 </div>
-            </div>
+                </div>
+                </div>
+            <!-- </div> -->
         </div>
     </section>
 
-    <button type='button' id='testJWT'>JWT</button>
-    <button type='button' id='invalidateCookie'>Invalidate Cookie</button>
+    <!-- <button type='button' id='testJWT'>JWT</button>
+    <button type='button' id='invalidateCookie'>Invalidate Cookie</button> -->
 
 
     <!-- <div id='signInError'>

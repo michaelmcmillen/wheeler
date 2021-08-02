@@ -28,7 +28,7 @@ function register() {
       .then(response => response.json())
       .then(resp => {
         // console.log(checkDuplicateEmail(resp));
-        window.location.replace("dashboard.html");
+        window.location.replace("myrides.html");
       })
     }
   }

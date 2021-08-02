@@ -4,6 +4,6 @@ require('dotenv').config()
 
 exports.ride = (req, res, next) => {
 
-  return res.sendFile(path.join(__dirname + '../../static-assets/ride.html'));
+  return res.sendFile(path.join(__dirname + '../../static-assets/createRide.html'));
       
 }
