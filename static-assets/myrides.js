@@ -28,6 +28,8 @@ window.onload = getRides();
 
 function expandRide(e) {
 
+  checkCardContent();
+
   let ride = {
     'id': e.target.id
   };
@@ -50,6 +52,11 @@ function expandRide(e) {
 
       document.getElementById('rideModal').setAttribute('class', 'modal is-active');
       document.getElementById('modalClose').addEventListener('click', modalClose);
+      document.getElementById('modalCloseButton').addEventListener('click', modalClose);
+      let deleteRideButton = document.getElementById('modalDeleteRide');
+      deleteRideButton.addEventListener('click', deleteRide);
+      deleteRideButton.rideParam = resp[0].id;
+
 
       let modalCardTitle = document.getElementById('modalCardTitle');
       modalCardTitle.innerText = resp[0].name;
@@ -100,13 +107,6 @@ function expandRide(e) {
       }
       notesTitle.after(notesContent);
 
-      // let gpxLinkContent = document.createElement('a');
-      // gpxLinkContent.setAttribute('class', 'rideCardContent');
-      // gpxLinkContent.setAttribute('href', resp[0].ridelink);
-      // let gpxLinkTitle = document.getElementById('gpxLinkTitle');
-      // gpxLinkContent.innerText = resp[0].ridelink;
-      // gpxLinkTitle.after(gpxLinkContent);
-
       let gpxFrame = document.createElement('iframe');
       gpxFrame.setAttribute('width', '100%');
       gpxFrame.setAttribute('height', '480');
@@ -117,8 +117,6 @@ function expandRide(e) {
       gpxLinkTitle.after(gpxFrame);
       document.getElementById('gpxiframe').src=resp[0].ridelink + '/embed';
       
-      
-
     }
     else {
       // toggleSignInError(resp)
@@ -127,10 +125,40 @@ function expandRide(e) {
 
 }
 
+//Checks to see if a ride has been opened already, and removes the last ride details before re-populating
+function checkCardContent() {
+
+  let rideCardContent = document.querySelectorAll('.rideCardContent');
+
+  if(rideCardContent.length === 0) {
+    return;
+  } else {
+    rideCardContent.forEach(el => el.remove());
+  }
+}
+
 function modalClose() {
-
   document.getElementById('rideModal').setAttribute('class', 'modal');
+}
 
+function deleteRide(e) {
+
+  let ride = {
+    'id': e.target.rideParam
+  };
+
+  fetch('http://localhost:3000/deleteRide', {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(ride)
+  })
+  .then(response => response.json())
+  .then(resp => {
+    console.log(resp);
+  })
 }
 
 function displayRides(rideNames) {
@@ -183,13 +211,6 @@ function displayRides(rideNames) {
   }
 
 }
-
-// function displayName(rideNames) {
-
-//   let myRideTitle = document.getElementById('nameTitle');
-//   myRideTitle.append('Hello ' + rideNames[0].firstname + '!');
-
-// }
 
 document.addEventListener('DOMContentLoaded', () => {
 

@@ -28,6 +28,7 @@ const logout = require('./controllers/logoutController.js');
 const ride = require('./controllers/rideController.js');
 const registerPage = require('./controllers/registerPageController.js');
 const selectRide = require('./controllers/selectRideController.js');
+const deleteRide = require('./controllers/deleteRideController.js');
 const { Console } = require('console');
 
 
@@ -72,3 +73,5 @@ app.get('/logout', (req, res, next) => {logout.logout(req, res, next)}, (req, re
 app.get('/invalidateCookie', (req, res) => {invalidateCookie.invalidateCookie(req, res)});
 
 app.post('/selectRide', function (req, res) {selectRide.selectRideHandler(req, res, db) });
+
+app.delete('/deleteRide', function (req, res) {deleteRide.deleteRide(req, res, db)});
