@@ -50,4 +50,10 @@ The purpose of the application is to cater for a specific cycle group, and that 
 
 <h1>Example Screenshots<h1>
 
+![Login Page](https://github.com/michaelmcmillen/wheeler/blob/master/screenshots/loginpage.png?raw=true)
+
+![Register Page](https://github.com/michaelmcmillen/wheeler/blob/master/screenshots/registerpage.png?raw=true)
+
+![View Rides](https://github.com/michaelmcmillen/wheeler/blob/master/screenshots/myridespage.png?raw=true)
+
 ![Create Ride](https://github.com/michaelmcmillen/wheeler/blob/master/screenshots/createridespage.png?raw=true)
