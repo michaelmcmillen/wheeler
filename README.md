@@ -50,4 +50,3 @@ The purpose of the application is to cater for a specific cycle group, and that 
 
 <h1>Example Screenshots<h1>
 
-<img src='./readme_imgs/loginpage.png'>
