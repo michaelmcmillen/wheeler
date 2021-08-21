@@ -1,6 +1,6 @@
 exports.logout = (req, res, next) => {
     res.cookie('token', '', {
-        expires: new Date(Date.now() - 300000), // Set cookie to date passed so invalid
+        expires: new Date(Date.now() - 300000), // Set cookie to date passed which makes it invalid
         // secure: false, //set to true if your using https
         httpOnly: true,
         sameSite: 'strict'
