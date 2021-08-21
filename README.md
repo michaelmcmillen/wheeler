@@ -47,3 +47,7 @@ The purpose of the application is to cater for a specific cycle group, and that 
     <li><a href='https://www.npmjs.com/package/knex/v/0.95.4'>knex.js</a> - Query builder for interacting with PostgreSQL</li>
     <li><a href='https://www.npmjs.com/package/jsonwebtoken'>jsonwebtoken</a> - JWT for movement through application and verification of User</li>    
 </ul>
+
+<h1>Example Screenshots<h1>
+
+<img src='./readme_imgs/loginpage.png'>
