@@ -6,7 +6,7 @@ The idea for this project came as a result of lockdowns 'Rule of 6' for outdoor 
 
 Once complete to its basic functionality, it is hoped this application will be used in the real world and continually improved.
 
-<h1>Current Features<h1>
+<h1>Current Features</h1>
 
 <ul>
     <li>Account Registration<li>
