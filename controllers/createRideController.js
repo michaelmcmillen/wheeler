@@ -1,5 +1,5 @@
+//Create new ride
 exports.createRideHandler = (req, res, db) => {
-
     db('rides')
     .insert({
         name: req.body.name,
@@ -18,5 +18,4 @@ exports.createRideHandler = (req, res, db) => {
         res.status(200).json("Ride Created Successfully");
     })
     .catch(err => res.status(400).json('createRideController Error:' + err));
-
 }

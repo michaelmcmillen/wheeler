@@ -11,13 +11,9 @@ rideLink.addEventListener('input', embedRide);
 var createRideButton = document.getElementById('createRideButton');
 createRideButton.addEventListener('click', createRide);
 let iframeWindow = document.getElementById('iframeEmbed');
-// let logoutButton = document.getElementById('logoutButton');
-// logoutButton.addEventListener('click', logout);
 
+//Embed iFrame to display Komoot route based upon URL provided
 function embedRide() {
-
-
-
     
     if(rideLink.value === '') {
         toggleEmbedError('blank');
@@ -42,13 +38,12 @@ function embedRide() {
             gpxRender.append(gpxFrame);
         
             document.getElementById('gpxiframe').src=rideLink.value + '/embed?profile=1';
-        embedFrame.style.display = 'block';   
+            embedFrame.style.display = 'block';   
         }
         else {
             document.getElementById('gpxiframe').src=rideLink.value + '/embed?profile=1';
         }
-
-        }
+    }
     else if(!checkLinkPattern(rideLink.value)){
         toggleEmbedError('invalid'); 
         if(checkEmbedExists) {
@@ -58,27 +53,28 @@ function embedRide() {
     }
 }
 
+//Check if iFrame already exists if URL is changed
 function checkEmbedExists() {
     if(document.getElementById('gpxiframe') === null){
         return true;
     }
     else {
-        console.log('NOPE');
+        console.log('Exists');
         return false;
     }
 }
 
-
+//Regex to ensure URL matches the Komoot specific URL pattern
 function checkLinkPattern(link) {
     let pattern = /^https:\/\/www\.komoot\.com\/tour\/[0-9]*$/;
     return pattern.test(link);
 }
 
+//Error message in case URL does not match Komoot URL
 function toggleEmbedError(cond) {
     if((cond === 'blank' || cond === 'valid') && document.getElementById('embedLinkError') !== null) {
         let embedError = document.getElementById('embedLinkError');
         embedError.remove(); 
-
     }
     else if(cond === 'invalid' && document.getElementById('embedLinkError') === null) {
         let embedError = document.createElement('p');
@@ -90,6 +86,7 @@ function toggleEmbedError(cond) {
     }
 }
 
+//Create a new ride
 function createRide() {
 
     let ride = {
@@ -119,29 +116,28 @@ function createRide() {
      })
 }
 
+//BULMA JS to enable burger menu
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Get all "navbar-burger" elements
+    
+    //Get all "navbar-burger" elements
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   
-    // Check if there are any navbar burgers
+    //Check if there are any navbar burgers
     if ($navbarBurgers.length > 0) {
   
-      // Add a click event on each of them
+      //Add a click event on each of them
       $navbarBurgers.forEach( el => {
         el.addEventListener('click', () => {
   
-          // Get the target from the "data-target" attribute
+          //Get the target from the "data-target" attribute
           const target = el.dataset.target;
           const $target = document.getElementById(target);
   
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          //Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
           el.classList.toggle('is-active');
           $target.classList.toggle('is-active');
-  
   
         });
       });
     }
-  
-  });
+});

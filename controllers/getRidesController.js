@@ -1,3 +1,4 @@
+//Retrieve logged in users created rides
 exports.getRides = (req, res, db) => {
     db.from('users')
     .where({
@@ -10,9 +11,6 @@ exports.getRides = (req, res, db) => {
     )
     .select('*')
     .then(response => {
-        
         res.json(response)
-        // console.log(response);
     })
-
 }

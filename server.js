@@ -1,11 +1,10 @@
-// Backend framework for node.js
+//Backend framework for node.js
 const express = require('express');
-// Middleware package to allow Cross Origin Requests
+//Middleware package to allow Cross Origin Requests
 const cors = require('cors');
-// Encryption for user data
+//Encryption for user data
 const bcrypt = require('bcryptjs'); // Password encryption
 const cookieParser = require('cookie-parser'); // Parse and populate cookies
-
 const app = express();
 // Allows string to be created with path to current file
 const path = require('path');
@@ -21,7 +20,6 @@ const signIn = require('./controllers/signInController.js');
 const createRide = require('./controllers/createRideController.js');
 const authenticate = require('./controllers/authenticateTokenController.js');
 const loginAuthenticate = require('./controllers/loginAuthenticateTokenController.js');
-const invalidateCookie = require('./controllers/invalidateCookieController.js');
 const getRides = require('./controllers/getRidesController.js');
 const myrides = require('./controllers/myridesController.js');
 const logout = require('./controllers/logoutController.js');
@@ -31,7 +29,7 @@ const selectRide = require('./controllers/selectRideController.js');
 const deleteRide = require('./controllers/deleteRideController.js');
 const { Console } = require('console');
 
-
+//Setup DB connection
 const db = require('knex')({
     client: 'pg',
     connection: {
@@ -57,7 +55,6 @@ app.use(authenticate.authenticateToken);
 
 app.get('/', (req, res) => { res.redirect('/myrides'); });
 
-
 app.get('/myrides', function (req, res) {myrides.myRides(req, res)});
 
 app.post('/createRide', function (req, res) {createRide.createRideHandler(req, res, db) });
@@ -69,8 +66,6 @@ app.get('/createRidePage', function (req, res) {ride.ride(req, res)});
 app.get('/logout', (req, res, next) => {logout.logout(req, res, next)}, (req, res) => {
     res.redirect('/login');
 });
-
-app.get('/invalidateCookie', (req, res) => {invalidateCookie.invalidateCookie(req, res)});
 
 app.post('/selectRide', function (req, res) {selectRide.selectRideHandler(req, res, db) });
 

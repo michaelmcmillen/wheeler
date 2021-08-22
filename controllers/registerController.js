@@ -1,13 +1,16 @@
 const genToken = require('./genToken.js');
 
+//Register new user
 exports.registerHandler = (req, res, db, bcrypt) => {
     
+    //Create hash of user password
     function encryptPassword(pass) {
         return bcrypt.hashSync(pass, 10);
     } 
     
     let hash = encryptPassword(req.body.password);
 
+    //Populate DB with user details
     db.transaction(trx => {
         trx.insert({
             hash: hash,
@@ -25,12 +28,12 @@ exports.registerHandler = (req, res, db, bcrypt) => {
                     joined: req.body.joined
                 })
                 .then(response => {
-                     // Generate a new JWT based on the users ID
+                     //Generate a new JWT based on the Users ID
                      const accessToken = genToken.generateAccessToken({'userid': response[0]});
-                     // Add token to cookie
+                     //Add JWT to cookie
                      res.cookie('token', accessToken, {
                      expires: new Date(Date.now() + 300000),
-                     // secure: false, //set to true if your using https
+                     // secure: false, //Set to true if using HTTPS
                      httpOnly: true,
                      sameSite: 'strict'
                      })

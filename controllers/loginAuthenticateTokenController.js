@@ -1,24 +1,26 @@
-// Use env variable for signing token
+//Use .env value to verify token
 require('dotenv').config()
-// Use jsonweb npm to create/verify JWT
+
+//Use jsonweb NPM to verify JWT
 const jwt = require('jsonwebtoken')
 const path = require('path');
 
+//Authenticate Login attempt
 exports.loginAuthenticateToken = (req, res, next) => {
     
-    // Check if cookie exists
     const token = req.cookies.token || '';
 
     try {
+        //Check if cookie exists
         if(!token) {
-          // If there is no token, return Login page
+          //If there is no token, return Login page
           return res.sendFile(path.join(__dirname + '../../static-assets/index.html'));
         }
-        // Decrypt token if it exists
+        //Decrypt token if it exists
         const decrypt = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        // Assign userid to req for next function
+        //Assign userid to req for next function
         req.user = decrypt.userid;
-        // Move to next
+        //Move to next
         next();
         } 
     catch(err) {

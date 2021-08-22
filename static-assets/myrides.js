@@ -1,11 +1,7 @@
-// let logoutButton = document.getElementById('logoutButton');
-// logoutButton.addEventListener('click', logout);
 let createRideButton = document.getElementById('createRide');
 createRideButton.addEventListener('click', createRides);
 
-
-// ride.addEventListener('click', expandRide);
-
+//Retrieve users rides
 function getRides() {
 
     fetch('http://localhost:3000/getRides', {
@@ -15,17 +11,17 @@ function getRides() {
     .then(resp => {
       if(resp) {
         displayRides(resp);
-
-        // displayName(resp)
       }
       else {
         toggleSignInError(resp)
       }
     })
-  }
+}
 
+//Retrieve rides when page is loaded
 window.onload = getRides();
 
+//Creare ride content card when selected on the My Rides page
 function expandRide(e) {
 
   checkCardContent();
@@ -33,8 +29,6 @@ function expandRide(e) {
   let ride = {
     'id': e.target.id
   };
-  // console.log(test);
-  // console.log(ride);
 
   fetch('http://localhost:3000/selectRide', {
     method: 'POST',
@@ -48,7 +42,6 @@ function expandRide(e) {
   .then(resp => {
     if(resp) {
       console.log(resp[0].created);
-
 
       document.getElementById('rideModal').setAttribute('class', 'modal is-active');
       document.getElementById('modalClose').addEventListener('click', modalClose);
@@ -122,7 +115,6 @@ function expandRide(e) {
       // toggleSignInError(resp)
     }
   })
-
 }
 
 //Checks to see if a ride has been opened already, and removes the last ride details before re-populating
@@ -137,10 +129,12 @@ function checkCardContent() {
   }
 }
 
+//BULMA closure of modal box
 function modalClose() {
   document.getElementById('rideModal').setAttribute('class', 'modal');
 }
 
+//Delete ride that is currently being viewed
 function deleteRide(e) {
 
   let ride = {
@@ -161,46 +155,47 @@ function deleteRide(e) {
   })
 }
 
+//Create new list of rides
 function displayRides(rideNames) {
     if(rideNames.length === 0) {
+
       let rideElAnchor = document.createElement('a');
-        let rideElSpan = document.createElement('span');
-        let rideElI = document.createElement('i');
+      let rideElSpan = document.createElement('span');
+      let rideElI = document.createElement('i');
 
-        rideElAnchor.setAttribute('class', 'panel-block');
-        rideElAnchor.setAttribute('id', 'noRides');
-        rideElSpan.setAttribute('class', 'panel-icon');
-        rideElI.setAttribute('class', 'fas fa-bicycle');
-        // rideElI.setAttribute('aria-hidden', 'true');
+      rideElAnchor.setAttribute('class', 'panel-block');
+      rideElAnchor.setAttribute('id', 'noRides');
+      rideElSpan.setAttribute('class', 'panel-icon');
+      rideElI.setAttribute('class', 'fas fa-bicycle');
+      // rideElI.setAttribute('aria-hidden', 'true');
 
-        let ridePanel = document.getElementById('ridesPanel');
+      let ridePanel = document.getElementById('ridesPanel');
 
-        ridePanel.append(rideElAnchor);
-        rideElAnchor.append(rideElSpan);
-        rideElSpan.append(rideElI);
+      ridePanel.append(rideElAnchor);
+      rideElAnchor.append(rideElSpan);
+      rideElSpan.append(rideElI);
 
-        rideElAnchor.append('You havent created any rides yet...');
-
+      rideElAnchor.append('You havent created any rides yet...');
     }
     else {
-    rideNames.forEach(ride => {
-        let rideElAnchor = document.createElement('a');
-        let rideElSpan = document.createElement('span');
-        let rideElI = document.createElement('i');
+      rideNames.forEach(ride => {
+      let rideElAnchor = document.createElement('a');
+      let rideElSpan = document.createElement('span');
+      let rideElI = document.createElement('i');
 
-        rideElAnchor.setAttribute('class', 'panel-block subtitle is-7 ride');
-        rideElAnchor.setAttribute('id', ride.id);
-        rideElSpan.setAttribute('class', 'panel-icon');
-        rideElI.setAttribute('class', 'fas fa-bicycle');
-        // rideElI.setAttribute('aria-hidden', 'true');
+      rideElAnchor.setAttribute('class', 'panel-block subtitle is-7 ride');
+      rideElAnchor.setAttribute('id', ride.id);
+      rideElSpan.setAttribute('class', 'panel-icon');
+      rideElI.setAttribute('class', 'fas fa-bicycle');
+      // rideElI.setAttribute('aria-hidden', 'true');
 
-        let ridePanel = document.getElementById('ridesPanel');
+      let ridePanel = document.getElementById('ridesPanel');
 
-        ridePanel.append(rideElAnchor);
-        rideElAnchor.append(rideElSpan);
-        rideElSpan.append(rideElI);
+      ridePanel.append(rideElAnchor);
+      rideElAnchor.append(rideElSpan);
+      rideElSpan.append(rideElI);
 
-        rideElAnchor.append(ride.name);
+      rideElAnchor.append(ride.name);
     });
   }
 
@@ -212,33 +207,33 @@ function displayRides(rideNames) {
 
 }
 
+//BULMA JS to enable burger menu
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
+  //Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any navbar burgers
+  //Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
-    // Add a click event on each of them
+    //Add a click event on each of them
     $navbarBurgers.forEach( el => {
       el.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
+        //Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        //Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
 
       });
     });
   }
-
 });
 
+//Move to Create Ride Page
 function createRides() {
   
   window.location.replace("/createRidePage");

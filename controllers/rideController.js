@@ -1,6 +1,5 @@
+//Move to Create Ride page
 const path = require('path');
-require('dotenv').config()
-
 
 exports.ride = (req, res, next) => {
 

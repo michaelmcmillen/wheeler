@@ -5,6 +5,7 @@ var registerButton = document.getElementById('registerButton');
 var password = document.getElementById('passwordRegisterInput');
 registerButton.addEventListener('click', register);
 
+//Register a new user
 function register() {
 
   let user = {
@@ -27,13 +28,14 @@ function register() {
       })
       .then(response => response.json())
       .then(resp => {
-        // console.log(checkDuplicateEmail(resp));
+        // console.log(checkDuplicateEmail(resp)); //Needs confirming successful
         window.location.replace("myrides.html");
       })
     }
   }
 }
 
+//Regex to ensure email is a valid formatted email address
 function checkValidEmail(emailInput) {
   let pattern = /(?!(^[.-].*|[^@]*[.-]@|.*\.{2,}.*)|^.{254}.)([a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@)(?!-.*|.*-\.)([a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,15}/;
   let emailBool = pattern.test(emailInput);
@@ -41,6 +43,7 @@ function checkValidEmail(emailInput) {
   return pattern.test(emailInput);
 }
 
+//Check if email has already been registered
 function checkDuplicateEmail(emailCheck) {
   if(emailCheck.includes('already exists')){
     return "Email Already Exists";
@@ -49,6 +52,7 @@ function checkDuplicateEmail(emailCheck) {
   }
 }
 
+//Regex to ensure password contains a capital letter, number, symbol and is a minimum of 8 characters long
 function checkPasswordPattern(passwordInput) {
   let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
   let passBool = pattern.test(passwordInput);
@@ -56,6 +60,7 @@ function checkPasswordPattern(passwordInput) {
   return pattern.test(passwordInput);
 }
 
+//Display error if email format is not correct
 function toggleEmailError(val) {
   if(val === false) {
     document.getElementById('emailError').style.display = 'block';
@@ -65,6 +70,7 @@ function toggleEmailError(val) {
   }
 }
 
+//Display error if password format is not correct
 function togglePasswordError(val) {
   if(val === false) {
     document.getElementById('passwordError').style.display = 'block';
@@ -74,29 +80,28 @@ function togglePasswordError(val) {
   }
 }
 
+//BULMA JS to enable burger menu
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
+  //Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any navbar burgers
+  //Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
-    // Add a click event on each of them
+    //Add a click event on each of them
     $navbarBurgers.forEach( el => {
       el.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
+        //Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        //Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
 
       });
     });
   }
-
 });

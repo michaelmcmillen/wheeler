@@ -1,21 +1,14 @@
-// let registerButton = document.getElementById('registerButton');
-// registerButton.addEventListener('click', registerPage);
-
 var email = document.getElementById('emailInput');
 var password = document.getElementById('passwordInput');
 var signInSubmit = document.getElementById('signInButton');
 signInSubmit.addEventListener('click', signIn);
 
-var testJWTButt = document.getElementById('testJWT');
-testJWTButt.addEventListener('click', testJWT);
-
-var invalCook = document.getElementById('invalidateCookie');
-invalCook.addEventListener('click', invalidateCookie);
-
+//Move to Register page
 function registerPage() {
       window.location.replace("/registerPage");
 }
 
+//User sign in
 function signIn() {
 
   let user = {
@@ -57,64 +50,46 @@ function toggleSignInError(val) {
 
 }
 
-function testJWT() {
+//Move to logout page once completed
+// function logout() {
 
-  fetch('http://localhost:3000/testJWT', {
-    credentials: "include"
-  })
-  .then(response => response.json())
-  .then(resp => {
-    if(resp) {
-      console.log(resp);
-      // window.location.replace("index.html");
-    }
-    else {
-      toggleSignInError(resp)
-    }
-  })
-}
+//   fetch('http://localhost:3000/logout', {
+//     credentials: "include"
+//   })
+//   .then(response => response.json())
+//   .then(resp => {
+//     if(resp) {
+//       // console.log(resp);
+//       window.location.replace("./");
+//     }
+//     else {
+//       toggleSignInError(resp)
+//     }
+//   })
+// }
 
-// Move to logout page once completed
-function logout() {
-
-  fetch('http://localhost:3000/logout', {
-    credentials: "include"
-  })
-  .then(response => response.json())
-  .then(resp => {
-    if(resp) {
-      // console.log(resp);
-      window.location.replace("./");
-    }
-    else {
-      toggleSignInError(resp)
-    }
-  })
-}
-
+//BULMA JS to enable burger menu
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
+  //Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any navbar burgers
+  //Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
 
-    // Add a click event on each of them
+    //Add a click event on each of them
     $navbarBurgers.forEach( el => {
       el.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
+        //Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        //Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
 
       });
     });
   }
-
 });
