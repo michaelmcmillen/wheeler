@@ -21,7 +21,7 @@ function getRides() {
 //Retrieve rides when page is loaded
 window.onload = getRides();
 
-//Creare ride content card when selected on the My Rides page
+//Create ride content card when selected on the My Rides page
 function expandRide(e) {
 
   checkCardContent();
@@ -152,14 +152,23 @@ function deleteRide(e) {
   .then(response => response.json())
   .then(resp => {
     console.log(resp);
+    console.log(e.target.rideParam);
+    modalClose();
+    removeRideList(e.target.rideParam);
   })
 }
 
-//Create new list of rides
-function displayRides(rideNames) {
-    if(rideNames.length === 0) {
+function removeRideList(rideId) {
+  let rideEl = document.getElementById(rideId);
+  rideEl.remove();
 
-      let rideElAnchor = document.createElement('a');
+  if(document.getElementsByClassName('ride').length === 0) {
+    createEmptyRidePanel();
+  }
+}
+
+function createEmptyRidePanel() {
+  let rideElAnchor = document.createElement('a');
       let rideElSpan = document.createElement('span');
       let rideElI = document.createElement('i');
 
@@ -176,6 +185,30 @@ function displayRides(rideNames) {
       rideElSpan.append(rideElI);
 
       rideElAnchor.append('You havent created any rides yet...');
+}
+
+//Create new list of rides
+function displayRides(rideNames) {
+    if(rideNames.length === 0) {
+
+      createEmptyRidePanel();
+      // let rideElAnchor = document.createElement('a');
+      // let rideElSpan = document.createElement('span');
+      // let rideElI = document.createElement('i');
+
+      // rideElAnchor.setAttribute('class', 'panel-block');
+      // rideElAnchor.setAttribute('id', 'noRides');
+      // rideElSpan.setAttribute('class', 'panel-icon');
+      // rideElI.setAttribute('class', 'fas fa-bicycle');
+      // // rideElI.setAttribute('aria-hidden', 'true');
+
+      // let ridePanel = document.getElementById('ridesPanel');
+
+      // ridePanel.append(rideElAnchor);
+      // rideElAnchor.append(rideElSpan);
+      // rideElSpan.append(rideElI);
+
+      // rideElAnchor.append('You havent created any rides yet...');
     }
     else {
       rideNames.forEach(ride => {
@@ -187,7 +220,6 @@ function displayRides(rideNames) {
       rideElAnchor.setAttribute('id', ride.id);
       rideElSpan.setAttribute('class', 'panel-icon');
       rideElI.setAttribute('class', 'fas fa-bicycle');
-      // rideElI.setAttribute('aria-hidden', 'true');
 
       let ridePanel = document.getElementById('ridesPanel');
 
