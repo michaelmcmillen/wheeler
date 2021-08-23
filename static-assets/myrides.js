@@ -158,6 +158,7 @@ function deleteRide(e) {
   })
 }
 
+//Remove deleted ride from users My Ride list
 function removeRideList(rideId) {
   let rideEl = document.getElementById(rideId);
   rideEl.remove();
@@ -167,12 +168,13 @@ function removeRideList(rideId) {
   }
 }
 
+//Create panel informing user they have not created any rides
 function createEmptyRidePanel() {
   let rideElAnchor = document.createElement('a');
       let rideElSpan = document.createElement('span');
       let rideElI = document.createElement('i');
 
-      rideElAnchor.setAttribute('class', 'panel-block');
+      rideElAnchor.setAttribute('class', 'panel-block subtitle is-7');
       rideElAnchor.setAttribute('id', 'noRides');
       rideElSpan.setAttribute('class', 'panel-icon');
       rideElI.setAttribute('class', 'fas fa-bicycle');
@@ -189,26 +191,12 @@ function createEmptyRidePanel() {
 
 //Create new list of rides
 function displayRides(rideNames) {
+
+    //If the user has no rides, display 'No Rides' text
     if(rideNames.length === 0) {
 
       createEmptyRidePanel();
-      // let rideElAnchor = document.createElement('a');
-      // let rideElSpan = document.createElement('span');
-      // let rideElI = document.createElement('i');
 
-      // rideElAnchor.setAttribute('class', 'panel-block');
-      // rideElAnchor.setAttribute('id', 'noRides');
-      // rideElSpan.setAttribute('class', 'panel-icon');
-      // rideElI.setAttribute('class', 'fas fa-bicycle');
-      // // rideElI.setAttribute('aria-hidden', 'true');
-
-      // let ridePanel = document.getElementById('ridesPanel');
-
-      // ridePanel.append(rideElAnchor);
-      // rideElAnchor.append(rideElSpan);
-      // rideElSpan.append(rideElI);
-
-      // rideElAnchor.append('You havent created any rides yet...');
     }
     else {
       rideNames.forEach(ride => {
