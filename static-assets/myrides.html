@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>Wheeler - My Rides</title>
 </head>
 <body>
-  
+  <section class="hero is-fullheight">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="./login">
@@ -25,7 +25,7 @@
             <span aria-hidden="true"></span>
         </a>
       </div>
-      <div id='navBarTarget' class='navbar-menu'>
+      <div id='navBarTarget2' class='navbar-menu'>
         <div class='navbar-start'>
           <div class="navbar-item">
             <a class="subtitle is-7" href='./myrides'>Home</a>
@@ -54,7 +54,7 @@
         </div>
       </div>
     </nav>
-    <section class="hero is-fullheight-with-navbar">
+    <!-- <div class="hero-body"> -->
       <div class="hero-body">
         <div class='container is-max-desktop level'>
         <section class='level-item'>
@@ -89,7 +89,7 @@
           </section>
           </div>
           </div>
-          </section>
+        <!-- </div> -->
 
           <div class="modal" id="rideModal">
             <div class="modal-background"></div>
@@ -117,7 +117,7 @@
               </footer>
             </div>
           </div>
-
+        </section>
     <script src="./myrides.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     
