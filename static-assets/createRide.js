@@ -47,7 +47,7 @@ function embedRide() {
     else if(!checkLinkPattern(rideLink.value)){
         toggleEmbedError('invalid'); 
         if(checkEmbedExists) {
-            let deleteEl = document.getElementById('embedTile');
+            let deleteEl = document.getElementById('gpxiframe');
             deleteEl.parentNode.removeChild(deleteEl);
         }
     }
