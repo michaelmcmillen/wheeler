@@ -1,6 +1,7 @@
 //Create new ride
 exports.createRideHandler = (req, res, db) => {
     db('rides')
+    .returning('id')
     .insert({
         name: req.body.name,
         date: req.body.date,
@@ -15,7 +16,10 @@ exports.createRideHandler = (req, res, db) => {
         created: new Date()
     })
     .then(response => {
-        res.status(200).json("Ride Created Successfully");
+        // console.log(response);
+        res.status(200).json(response);
     })
     .catch(err => res.status(400).json('createRideController Error:' + err));
+
+    
 }

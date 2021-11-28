@@ -17,6 +17,10 @@ body {
   margin: 10px 0 0 0;
 }
 
+input[type=checkbox] {
+  width: 30px;
+}
+
 input {
   border: 1px solid grey;
   border-radius: 5px;

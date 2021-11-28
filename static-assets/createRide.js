@@ -86,6 +86,8 @@ function toggleEmbedError(cond) {
     }
 }
 
+
+
 //Create a new ride
 function createRide() {
 
@@ -112,8 +114,88 @@ function createRide() {
       })
       .then(response => response.json())
       .then(resp => {        
-        window.location.replace("./myrides");
+        createRideShare(resp);
+        // window.location.replace("./myrides");
      })
+}
+
+// Insert ride:user bridge
+function createRideShare(rideId) {
+
+    let membersCheck = document.getElementsByClassName('memberCheckbox');
+    for (let member of membersCheck) {
+            if(member.checked === true) {
+
+                let rideShare = {
+                    'userId': member.value,
+                    'rideId': parseInt(rideId)
+                }
+
+                fetch('http://localhost:3000/createRideShare', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(rideShare)
+                    })
+                    .then(response => response.json())
+                    .then(resp => {
+                        console.log(resp);
+                        window.location.replace("./myrides");
+                    })
+                }
+            }
+        
+    }
+
+
+
+//Retrieve all invite users
+function retrieveInviteUsers() {
+
+    fetch('http://localhost:3000/getInvites', {
+        // method: 'GET',
+        credentials: 'include'     
+    })
+    .then(response => response.json())
+    .then(resp => {
+        console.log(resp);
+        displayMembers(resp);
+    })
+}
+
+//Retrieve all users on loading of Create Ride modal
+window.onload = retrieveInviteUsers();
+
+//Display all members within modal to invite
+function displayMembers(members) {
+    if(members.length === 0) {
+        //create no members text
+    }
+    else {
+        members.forEach(member => {
+
+            let checkBoxEl = document.createElement('input');
+            checkBoxEl.setAttribute('type', 'checkbox');
+            checkBoxEl.setAttribute('id', member.firstname);
+            checkBoxEl.setAttribute('value', member.id);
+            checkBoxEl.setAttribute('class', 'memberCheckbox');
+
+            let checkBoxLabel = document.createElement('label');
+            checkBoxLabel.setAttribute('for', member.firstname);
+
+            let membersList = document.getElementById('membersList');
+            membersList.append(checkBoxEl);
+            membersList.append(checkBoxLabel);
+            checkBoxLabel.append(member.firstname);
+
+            let checkboxBreak = document.createElement('br');
+            membersList.append(checkboxBreak);
+
+        })
+    }
+    // createRideShare();
 }
 
 //BULMA JS to enable burger menu

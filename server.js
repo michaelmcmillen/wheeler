@@ -18,6 +18,7 @@ app.use(express.static("./static-assets"));
 const register = require('./controllers/registerController.js');
 const signIn = require('./controllers/signInController.js');
 const createRide = require('./controllers/createRideController.js');
+const createRideShare = require('./controllers/createRideShareController.js');
 const authenticate = require('./controllers/authenticateTokenController.js');
 const loginAuthenticate = require('./controllers/loginAuthenticateTokenController.js');
 const getRides = require('./controllers/getRidesController.js');
@@ -27,6 +28,7 @@ const ride = require('./controllers/rideController.js');
 const registerPage = require('./controllers/registerPageController.js');
 const selectRide = require('./controllers/selectRideController.js');
 const deleteRide = require('./controllers/deleteRideController.js');
+const getInvites = require('./controllers/getInvitesController.js');
 const { Console } = require('console');
 
 //Setup DB connection
@@ -59,7 +61,11 @@ app.get('/myrides', function (req, res) {myrides.myRides(req, res)});
 
 app.post('/createRide', function (req, res) {createRide.createRideHandler(req, res, db) });
 
+app.post('/createRideShare', function (req, res) {createRideShare.createRideShareHandler(req, res, db) });
+
 app.get('/getRides', function (req, res) {getRides.getRides(req, res, db)});
+
+app.get('/getInvites', function (req, res) {getInvites.getInvites(req, res, db)});
 
 app.get('/createRidePage', function (req, res) {ride.ride(req, res)});
 
